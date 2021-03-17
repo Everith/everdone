@@ -1,3 +1,27 @@
+.git/
+# Other
+source/
+vendor/
+
+# Binaries
+bin/
+**/bin/
+!Vendor/bin/premake/
+bin-int/
+
+# Visual Studio files and folder
+.vscode/
+.vs/
+#**.sln
+#**.vcxproj
+#**.vcxproj.filters
+#**.vcxproj.user
+
+#premake5
+premake5.lua
+GenerateProjects.bat
+
+#Generated default c ingnore files
 # Prerequisites
 *.d
 
@@ -50,3 +74,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+

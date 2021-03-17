@@ -1,0 +1,24 @@
+Character:
+stats:
+	Intellect
+	Strength
+	Agility
+	Spirit
+	Stamina
+	Luck
+	Appearance
+
+needs:
+	Oxygen
+	Hunger
+	Thirst
+	Light
+	Sleep
+	WC
+
+Senses:
+	Hearing
+	Smelling
+	Tasting
+	Touching
+	Seeing
