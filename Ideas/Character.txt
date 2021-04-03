@@ -7,14 +7,16 @@ stats:
 	Stamina
 	Luck
 	Appearance
-
 needs:
 	Oxygen
-	Hunger
-	Thirst
-	Light
+	Eats  / Hunger
+	Drinks  / Thirst
 	Sleep
 	WC
+	Light
+	Enjoes / life goals:
+	Hates:
+	Reproduction:
 
 Senses:
 	Hearing

@@ -1,2 +1,6 @@
 Generic:
 Demon/Daemon    Human   Animal    Insect
+
+
+
+
