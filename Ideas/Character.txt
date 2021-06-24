@@ -6,15 +6,18 @@ stats:
 	Spirit
 	Stamina
 	Luck
-	Appearance
-
+	Charisma
 needs:
 	Oxygen
-	Hunger
-	Thirst
-	Light
-	Sleep
+	Eats  / Hunger
+	Drinks  / Thirst
+	Sleep / Fatigu
 	WC
+	Light
+	Reproduction:
+
+Enjoes / life goals:
+Hates:
 
 Senses:
 	Hearing
@@ -22,3 +25,5 @@ Senses:
 	Tasting
 	Touching
 	Seeing
+	-----------
+	Magic sense
