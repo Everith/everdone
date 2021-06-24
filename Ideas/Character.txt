@@ -6,15 +6,17 @@ stats:
 	Spirit
 	Stamina
 	Luck
-	Charisma
+	Appearance
 needs:
 	Oxygen
-	Eats  / Hunger
-	Drinks  / Thirst
-	Sleep / Fatigu
-	WC
-	Light
+	Enjoes / life goals:
+	Hates:
 	Reproduction:
+	Light
+	WC
+	Sleep
+	Drinks  / Thirst
+	Eats  / Hunger
 
 Enjoes / life goals:
 Hates:
