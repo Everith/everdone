@@ -1,4 +1,3 @@
-#include "evepch.h"
 #include "Timer.h"
 
 using namespace std::chrono;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Everith/Core.h"
+#include "../Core.h"
 namespace Everith {
 	class Events
 	{
