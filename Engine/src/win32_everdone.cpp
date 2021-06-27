@@ -81,6 +81,7 @@ WinMain(HINSTANCE hInstance,
 //		[]() {};
 
 
+        
 		WNDCLASSA wc = { };
 		//wc.cbSize = sizeof(WNDCLASS);
 		//wc.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
