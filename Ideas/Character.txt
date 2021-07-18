@@ -1,27 +1,26 @@
 Character:
-stats:
-	Intellect
-	Strength
-	Agility
-	Spirit
-	Stamina
-	Luck
-	Appearance
-needs:
-	Oxygen
-	Enjoes / life goals:
-	Hates:
-	Reproduction:
-	Light
-	WC
-	Sleep
-	Drinks  / Thirst
-	Eats  / Hunger
+stats: 7
+	int Intellect
+	int Strength
+	int Agility
+	int Spirit
+	int Stamina
+	int Luck
+	int Appearance
+needs: 5 or 7
+	float Eats  / Hunger
+	float Drinks  / Thirst
+	float Sleep
+	float Oxygen
+	float WC
+	?? Reproduction:
+	?? Light
 
-Enjoes / life goals:
-Hates:
+?? Enjoes / life goals:
+?? Hates:
 
-Senses:
+Levels --
+Senses: 6 or more
 	Hearing
 	Smelling
 	Tasting

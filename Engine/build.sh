@@ -1,21 +1,21 @@
-#!/bin/bash
+#! /bin/bash
 # Build script for engine
 set echo on
 
 mkdir -p ../bin
 
 # Get a list of all the .c files.
-cFilenames=$(find . -type f -name "*.c")
-
-# echo "Files:" $cFilenames
+cFilenames=$(find src/. -type f -name "*.c*")
+#echo "Files:" $cFilenames
 
 assembly="engine"
-compilerFlags="-g -shared -fdeclspec -fPIC"
+compilerFlags=""
 # -fms-extensions 
 # -Wall -Werror
-includeFlags="-Isrc -I$VULKAN_SDK/include"
+includeFlags=""
 linkerFlags="-lvulkan -lxcb -lX11 -lX11-xcb -lxkbcommon -L$VULKAN_SDK/lib -L/usr/X11R6/lib"
-defines="-D_DEBUG -DKEXPORT"
+defines="-D_DEBUG -DKEXPORT -LINUX_PLATFORM"
 
 echo "Building $assembly..."
-clang $cFilenames $compilerFlags -o ../bin/lib$assembly.so $defines $includeFlags $linkerFlags
+#clang $cFilenames -o ../bin/lib$assembly.so $defines $includeFlags $linkerFlags
+clang src/everdone.cpp -o ../bin/lib$assembly

@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Core.h"
+#include "../Core.h"
 
 namespace Everith {
 	struct WindowProps {
@@ -15,10 +15,9 @@ namespace Everith {
 		// }
 	};
 
-	// Interface representing a desktop system based Window
 	class Window {
 	public:
-		virtual Window* Create (const WindowProps& props = WindowProps()) =0;
-		virtual ~Window () {}
+	Window* Create (const WindowProps& props = WindowProps());
+	~Window () {}
 	};
 }
