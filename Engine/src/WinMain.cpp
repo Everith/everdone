@@ -13,6 +13,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		Everith::Config c;
 		c.check();
 
+		//TODO: asdasd
 		//lamda teszt#########################################################################################
 		// capture | param | func
 		//functioin pointer ** func*
