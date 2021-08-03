@@ -1,4 +1,3 @@
-#pragma once
 
 // Unsigned int types.
 typedef unsigned char u8;
@@ -46,7 +45,7 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected f64 to be 8 bytes.");
 
 // Platform detection
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) 
-#define WINDWOS_PLATFORM 1
+#define WINDOWS_PLATFORM 1
 #ifndef _WIN64
 #error "64-bit is required on Windows!"
 #endif
@@ -82,19 +81,5 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected f64 to be 8 bytes.");
 #error "Unknown platform!"
 #endif
 
-#ifdef EVE_EXPORT
-// Exports
-#ifdef _MSC_VER
-#define EAPI __declspec(dllexport)
-#else
-#define EAPI __attribute__((visibility("default")))
-#endif
-#else
-// Imports
-#ifdef _MSC_VER
-#define EAPI __declspec(dllimport)
-#else
-#define EAPI
-#endif
-#endif
+
 
