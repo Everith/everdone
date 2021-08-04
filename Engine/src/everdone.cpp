@@ -9,10 +9,9 @@
 
 #ifdef WINDOWS_PLATFORM
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine, int nCmdShow) {
-    std::cout << "Hello World" << std::endl;
-    
-    Everith::platform p("Everdone",0,0,1280,1024);
     //Everith::platform p();
+    Everith::platform p("Everdone",10,30,1900,1000);
+
     Everith::Game g(&p);
     g.loop(); //NOTE game loop
     
@@ -23,6 +22,11 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLin
 #ifdef LINUX_PLATFORM
 int main(){
 	std::cout << "Hello world!";
+
+    Everith::platform p("Everdone",10,30,1900,1000);
+    Everith::Game g(&p);
+    g.loop(); //NOTE game loop
+
 	return 0;
 }
 #endif

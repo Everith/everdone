@@ -1,7 +1,7 @@
 #pragma once
 
 #include"platform/platform.h"
-
+#include <iostream>
 
 namespace Everith {
 class Game {

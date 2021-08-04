@@ -38,8 +38,4 @@ lamia
 hydra
 vampires
 kracken
-
-
-
-
-
+Parasite

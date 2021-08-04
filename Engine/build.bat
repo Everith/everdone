@@ -1,7 +1,7 @@
 @ECHO OFF
 
 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-
+cls
 setlocal ENABLEDELAYEDEXPANSION
 SET name=everdone
 SET cFilenames=
@@ -16,9 +16,10 @@ pushd build
 ECHO "Building %name%%..."
 REM SET defines=/DWINDOWS_PLATFORM
 SET linkers=User32.lib Gdi32.lib kernel32.lib winspool.lib comdlg32.lib advapi32.lib
-cl /W3 /EHsc %defines% %cFilenames% /link %linkers% /out:%name%.exe
+cl -Zi /W3 /EHsc %defines% %cFilenames% /link %linkers% /out:%name%.exe
+REM tags for cl later 
 popd
-ECHO "Building %name%% DONE!"
+ECHO "Building %name%% DONE! Finished!"
 
 
 REM REM Build script for engine

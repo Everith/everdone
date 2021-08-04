@@ -4,9 +4,11 @@
 namespace Everith { 
 
 void Game::loop(){
+    int result;
     while (isrunning){
         //TODO stuff
-        p->platform_pump_messages();
+        isrunning = p->platform_pump_messages();
+        
     } 
 }
 }
