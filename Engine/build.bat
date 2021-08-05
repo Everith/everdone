@@ -9,6 +9,7 @@ FOR /R %%f in (*.cpp) do (
     SET cFilenames=!cFilenames! %%f
 )
 REM echo "Files:" %cFilenames%
+REM echo "Files:" %cFilenames%
 
 mkdir build
 pushd build
