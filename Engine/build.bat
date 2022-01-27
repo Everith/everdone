@@ -16,9 +16,10 @@ pushd build
 
 ECHO "Building %name%%..."
 REM SET defines=/DWINDOWS_PLATFORM
-SET linkers=User32.lib Gdi32.lib kernel32.lib winspool.lib comdlg32.lib advapi32.lib
+SET linkers=User32.lib Gdi32.lib kernel32.lib winspool.lib comdlg32.lib advapi32.lib Shell32.lib
 cl -Zi /W3 /EHsc %defines% %cFilenames% /link %linkers% /out:%name%.exe
 REM tags for cl later 
+REM Shell32.lib for system tray acces 
 popd
 ECHO "Building %name%% DONE! Finished!"
 

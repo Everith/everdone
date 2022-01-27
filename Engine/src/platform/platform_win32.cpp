@@ -1,35 +1,50 @@
 #include "platform.h"
+#include "../resource.h"
 
 // Windows platform layer.
 #if WINDOWS_PLATFORM
 #include <wingdi.h>
 #include <iostream>
 #include <stdint.h>
+
 // Clock
 static f64 clock_frequency;
 static LARGE_INTEGER start_time;
 
 namespace Everith {
 
+//TODO make these variables not GLOBAL 
+HINSTANCE h_instance=nullptr;
+HWND m_hwnd=nullptr;
+
+NOTIFYICONDATA m_notifyIconData;
+HMENU m_Hmenu=nullptr;
+//###################################
+
+
+
 LRESULT CALLBACK process_message(HWND m_hwnd, u32 msg, WPARAM w_param, LPARAM l_param);
 
-platform::platform()
-{
+platform::platform(){
 }
 
 b8 platform::platform_startup(){
     h_instance = GetModuleHandleA(0);
 
     // Setup and register window class.
-    HICON icon = LoadIcon(h_instance, IDI_APPLICATION);
+    //HICON icon = LoadIcon(h_instance, IDI_APPLICATION); //WARN redundant lent a sorba beillesytve m'r megvan
     WNDCLASSA wc;
     memset(&wc, 0, sizeof(wc));
+    //TODO maybe create here register to taskbar alreadi exist, so dont try to create too early a tray icon ?
     wc.style = CS_DBLCLKS;  // Get double-clicks
     wc.lpfnWndProc = process_message;
     wc.cbClsExtra = 0;
     wc.cbWndExtra = 0;
     wc.hInstance = h_instance;
-    wc.hIcon = icon;
+    /* Use default icon and mouse-pointer */
+    //wc.hIcon  =  LoadIcon (GetModuleHandle(NULL), MAKEINTRESOURCE(ICO1));
+    wc.hIcon  =  LoadIcon (h_instance, MAKEINTRESOURCE(ICO1));
+    //wc.hIconSm = LoadIcon (GetModuleHandle(NULL), MAKEINTRESOURCE(ICO1));
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);  // NULL; // Manage the cursor manually
     wc.hbrBackground = NULL;                   // Transparent
     wc.lpszClassName = "Everdone_window_class";
@@ -84,6 +99,8 @@ b8 platform::platform_startup(){
     // If initially maximized, use SW_SHOWMAXIMIZED : SW_MAXIMIZE
     ShowWindow(m_hwnd, show_window_command_flags);
 
+    InitNotifyIconData();
+    
     return 1;
 }
 
@@ -98,9 +115,13 @@ void platform::platform_shutdown() {
 b8 platform::platform_pump_messages() {
     MSG message;
     while (PeekMessageA(&message, NULL, 0, 0, PM_REMOVE)) {
-        if (message.message == WM_QUIT | message.message == WM_CLOSE)
+        //OutputDebugStringA(message.message);
+        if (message.message == WM_QUIT || message.message == WM_CLOSE)
         {
             return false;
+        }
+        if (69420 == message.message){
+            minimize();
         }
         
         TranslateMessage(&message);
@@ -232,17 +253,105 @@ void EvEUpdateWindow(HDC DeviceContext,RECT *WindowRect, int x,int y,int width,i
                  &BitmapInfo, 
                  DIB_RGB_COLORS,SRCCOPY);
 }
-            
 
-LRESULT CALLBACK process_message(HWND window, u32 msg, WPARAM w_param, LPARAM l_param) {
+void platform::minimize(){
+    // hide the main window
+    OutputDebugStringW(L"\nminimize()");
+    ShowWindow(m_hwnd, SW_HIDE);
+}
+
+void platform::restore(){
+    ShowWindow(m_hwnd, SW_SHOW);
+}
+
+void platform::InitNotifyIconData(){
+    memset( &m_notifyIconData, 0, sizeof( NOTIFYICONDATA ) ) ;
+
+    const char* szTIP = "Hahaahah traz name here";
+
+    m_notifyIconData.cbSize = sizeof(NOTIFYICONDATA);
+    m_notifyIconData.hWnd = m_hwnd;
+    m_notifyIconData.uID = ID_TRAY_APP_ICON;
+    m_notifyIconData.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+    m_notifyIconData.uCallbackMessage = WM_SYSICON; //Set up our invented Windows Message
+    m_notifyIconData.hIcon = (HICON)LoadIcon( GetModuleHandle(NULL), MAKEINTRESOURCE(ICO1) ) ;
+    strncpy(m_notifyIconData.szTip, szTIP, sizeof(szTIP)); //TODO maybe szTIP should be a variable not a const string letters
+}
+
+LRESULT process_message(HWND window, u32 msg, WPARAM w_param, LPARAM l_param) {
+    platform p;
     switch (msg) {
+        case WM_CREATE:{
+            OutputDebugStringW(L"\nWM_CREATE");
+            ShowWindow(m_hwnd, SW_HIDE);
+            m_Hmenu = CreatePopupMenu();
+            AppendMenu(m_Hmenu, MF_STRING, ID_TRAY_EXIT,  TEXT( "Exit" ) );
+        }break;
+        case WM_ACTIVATE:{
+            OutputDebugStringW(L"\nWM_ACTIVATE\n");
+            Shell_NotifyIcon(NIM_ADD, &m_notifyIconData);
+        }break;
+        case WM_SYSCOMMAND:{
+            OutputDebugStringW(L"\nWM_SYSCOMMAND");
+            /*
+            In WM_SYSCOMMAND messages, the four low-order bits of the wParam parameter 
+            are used internally by the system. To obtain the correct result when testing the value of wParam, 
+            an application must combine the value 0xFFF0 with the wParam value by using the bitwise AND operator.
+            */ 
+
+            switch( w_param & 0xFFF0 )  
+            {
+            case SC_MINIMIZE:
+            case SC_CLOSE:  
+                OutputDebugStringW(L"\nSC_CLOSE 69420");
+                break;
+            }
+        }break;
+        case WM_SYSICON:{
+            OutputDebugStringW(L"\nWM_SYSICON");
+            
+            switch(w_param){
+            case ID_TRAY_APP_ICON:{
+                OutputDebugStringW(L"\nID_TRAY_APP_ICON");
+                SetForegroundWindow(m_hwnd);
+            }break;
+            }
+            
+            if (l_param == WM_LBUTTONUP){
+                //TODO restore
+            }
+            else if (l_param == WM_RBUTTONDOWN){
+                // Get current mouse position.
+                POINT curPoint ;
+                GetCursorPos(&curPoint) ;
+                SetForegroundWindow(m_hwnd);
+
+                // TrackPopupMenu blocks the app until TrackPopupMenu returns
+                UINT clicked = TrackPopupMenu(m_Hmenu,TPM_RETURNCMD | TPM_NONOTIFY,curPoint.x,curPoint.y,0,m_hwnd,NULL);
+
+                SendMessage(m_hwnd, WM_NULL, 0, 0); // send benign message to window to make sure the menu goes away.
+                if (clicked == ID_TRAY_EXIT){
+                // quit the application.
+                     Shell_NotifyIcon(NIM_DELETE, &m_notifyIconData);
+                     PostQuitMessage(0);
+                }
+            }
+        }break;
+        case WM_NCHITTEST:{
+            //OutputDebugStringW(L"\nWM_NCHITTEST");
+            UINT uHitTest = DefWindowProcA(window, msg, w_param, l_param);
+            if(uHitTest == HTCLIENT)
+                return HTCAPTION;
+            else
+                return uHitTest;
+        }break;
         case WM_CLOSE:{
-            std::cout << "WM_CLOSE !!" << std::endl;
+            OutputDebugStringW(L"\nWM_CLOSE");
             PostQuitMessage(0);
             return WM_QUIT;
         }break;
         case WM_DESTROY:{
-            std::cout << "WM_DESTROY!!" << std::endl;
+            OutputDebugStringW(L"\nWM_DESTROY");
             return WM_QUIT;
         }break;
         case WM_SIZE:{

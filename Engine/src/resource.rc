@@ -1,0 +1,4 @@
+#include "resource.h"
+
+ICO1 ICON "asd.png"
+ID_TRAY_APP_ICON ICON "asd.png"

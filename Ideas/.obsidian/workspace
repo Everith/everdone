@@ -1,0 +1,102 @@
+{
+  "main": {
+    "id": "8d687c46e9299d76",
+    "type": "split",
+    "children": [
+      {
+        "id": "c73a558fc57d9c54",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Ideas.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "67c74e8038456b36",
+    "type": "split",
+    "children": [
+      {
+        "id": "b76286db2f996f2c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b9b12744ab7790b6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "ec53bdc187292cde",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ae0917da47a278cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "354f32e7aae67518",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "abfb45c2eb72ad15",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Ideas.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "c73a558fc57d9c54",
+  "lastOpenFiles": [
+    "Ideas.md",
+    "Main.md",
+    "Story.md",
+    "Mechanics.md",
+    "Characters/Character.md",
+    "Characters/Races.md",
+    "Untitled.md",
+    "Places.md",
+    "Races.md",
+    "Character.md"
+  ]
+}
