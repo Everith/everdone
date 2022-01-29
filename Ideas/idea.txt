@@ -1,64 +1,17 @@
-Character:
-  Race:
-    Human
-    Elf
-    Dwarf
-    Parasite / Spirit
-    Mimic
-
-  Stats:
-    Stamina
-    Strength
-    Intellect
-    Agility
-    Spirit/Willpower
-    Lust
-    Resistance
-    Desire/Addiction
-Items can be carried:
-    Equipment:
-      Armor
-      Weapon
-      Consumable
-    Relics / Treasure / Loot / Trofie
-      can't be used don't add bonuses to the character ? 
-
-
-  Profession:
-    Loot -> beast drop materials only and have to craft the gear from it, with profession or with a quest.
-            if crafting with profession boss loot have to be hard to craft and require multiple profession so 1 people cant craft it.
-            quest needs more material then crafting but can be done whiteout other people help.
-    Blacksmithing
-    Leathercrafting
-    Tailoring
-    Alchemy
-    Enchanting
-    Farming
-    Mining
-
-  Classes:
-    Warrior / Barbare - Base
-    Rogue / Assassin - Theft
-    Priest / Paladin - Faith - Light - Dark
-    Mage / Magic - manna user - Arcane - Elements
-    Spiritualist / Shaman - Totems - Spirits
-
-Starting:
-  In a small village, you dream of your past. In it you can change your history and decide some of your traits.
-  What you do in the dream changes the starting area and stats that you will possess.
-Paths:
-  Common / neutral - Simple villager basic starting
-  Theaf / rouge - Bad reputation starting without helpers / family
-  Good kid / curious helper - starting in a city in a school.
-Routes:
+Places:
   School
   Adventure guild
   Crafting guild
-  Blind exploring / gaining reputation with people in the world / humanoids favor or just killing mindlessly and get hated by everyone power hunting searching for powerfull artifacts or curses.
-
-
-  Plot:
+  Forest
+  Desert
+  Ocean
+  Ruins
   
-  Random ideas:	
+
+Plot:
+  Start:
+  End:
+
+Random ideas:	
 	A caracter form is determined from the actions it makes, magic usage can alter someone form temporaly or permanently
 	Powerfull accesory / source if use corrupts the user mind and body and alter it.

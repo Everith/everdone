@@ -1,26 +1,27 @@
-Character:
+[[Main]]
+# Character:
 stats: 7
-	int Intellect (learning speed / magic damage)
-	int Strength (phisical damage / carry weight)
-	int Agility (dodge / movement speed)
-	int Spirit ()
-	int Stamina (exehustion)
-	int Luck (droprate)
-	int Appearance (charm / speech)
+> int Intellect (learning speed / magic damage)
+> int Strength (phisical damage / carry weight)
+> int Agility (dodge / movement speed)
+> int Spirit ()
+> int Stamina (exehustion)
+> int Luck (droprate)
+> int Appearance (charm / speech)
     
-	Willpower
-    Lust
-    Resistance
-    Desire/Addiction
+> Willpower
+> Lust
+> Resistance
+> Desire/Addiction
 needs: 7
-	-- (x) deadli (+) confort
-	x float Eats  / Hunger
-	x float Drinks  / Thirst
-	x float Sleep
-	x float Oxygen
-	x float WC
-	+  Reproduction:
-	+ Light
+(x) deadly (+) confort
+> x float Eats  / Hunger
+> x float Drinks  / Thirst
+> x float Sleep
+> x float Oxygen
+> x float WC
+> +  Reproduction:
+> + Light
 
 list Likes:
 list Dislikes:

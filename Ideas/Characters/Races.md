@@ -1,4 +1,5 @@
-List of Races:
+[[Main]]
+# List of Races:
 human
 demihumam (animal feature)
 demihumam (demon / angel feature)
@@ -6,7 +7,7 @@ demon
 angel
 spirit
 
-List of sub races:
+# List of sub races:
 minotaur / tauren
 imp
 succubus / incubus
