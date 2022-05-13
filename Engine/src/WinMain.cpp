@@ -1,5 +1,4 @@
-﻿#include "ConsolApp.h"
-#include "Window/Window.h"
+﻿#include "Window/Window.h"
 #include "Window/Windows/EveWindow.h"
 #include "Events/Events.h"
 
