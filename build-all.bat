@@ -1,9 +1,10 @@
 @ECHO OFF
 REM Build Everything
 
-REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-ECHO "Building everything..."
+@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+@REM call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
 
+ECHO "Building everything..."
 
 PUSHD engine
 CALL build.bat

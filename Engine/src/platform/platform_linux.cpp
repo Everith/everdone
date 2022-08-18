@@ -1,3 +1,4 @@
+/*
 #include "platform.h"
 
 // Linux platform layer.
@@ -611,3 +612,4 @@ keys translate_keycode(u32 x_keycode) {
 }
 
 #endif
+*/

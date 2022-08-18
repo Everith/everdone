@@ -1,4 +1,3 @@
-
 // Unsigned int types.
 typedef unsigned char u8;
 typedef unsigned short u16;
@@ -44,7 +43,7 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected f64 to be 8 bytes.");
 #define FALSE 0
 
 // Platform detection
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 #define WINDOWS_PLATFORM 1
 #ifndef _WIN64
 #error "64-bit is required on Windows!"
@@ -80,6 +79,3 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected f64 to be 8 bytes.");
 #else
 #error "Unknown platform!"
 #endif
-
-
-
