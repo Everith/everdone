@@ -1,25 +1,31 @@
-﻿#include <vulkan/vulkan.h>
-#include <iostream>
+﻿#include <iostream>
+#include "platform/platform.h"
+#include "renderer/renderer.h"
 
 int main()
 {
-	VkApplicationInfo appInfo = {};
-	appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-	appInfo.pApplicationName = "Pong";
-	appInfo.pEngineName = "everdone";
+    ED::platform *p = new ED::platform("Teszt applik", 50, 50, 600, 100);
+    if (!p->platform_create_window())
+    {
+        return -1;
+    }
+    VkContext vkcontext;
+    if (!vk_init(&vkcontext, p->m_hwnd))
+    {
+        std::cout << "VK Init succesful" << std::endl;
+    }
 
-	VkInstanceCreateInfo instanceInfo = {};
-	instanceInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-	instanceInfo.pApplicationInfo = &appInfo;
+    while (p->platform_update_window())
+    {
+        std::cout << "Running" << std::endl;
+        if (!vk_render(&vkcontext))
+        {
+            return -1;
+        }
+        Sleep(33); // 60 ish FPS
+    }
 
-	VkInstance vkInstance;
-	VkResult result = vkCreateInstance(&instanceInfo, 0, &vkInstance);
-	if (result == VK_SUCCESS)
-	{
-		std::cout << "VK Instance creatnon success" << std::endl;
-	}
-
-	return 0;
+    return 0;
 }
 
 // #include "defines.h"

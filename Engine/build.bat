@@ -17,12 +17,14 @@ mkdir build
 pushd build
 ECHO "Building %name%% ..."
 REM D_DEBUG -DKEXPORT -D_CRT_SECURE_NO_WARNINGS -WINDOWS_PLATFORM /DWINDOWS_PLATFORM
-SET defines=/D DEBUG
+SET defines=/D DEBUG 
 REM info
 set includes=/Isrc /I%VULKAN_SDK%/Include
 REM Shell32.lib for system tray acces  
 SET linkers=/link /LIBPATH:%VULKAN_SDK%/Lib vulkan-1.lib User32.lib Gdi32.lib kernel32.lib winspool.lib comdlg32.lib advapi32.lib Shell32.lib
 
-cl -Zi /W3 /EHsc %includes% %defines% %cFilenames% %linkers% /out:%name%.exe
+cl -Z7 /W3 /EHsc %includes% %defines% %cFilenames% %linkers% /out:%name%.exe
+REM -Zi 
+REM /Fe"main"  can change name of something
 popd
 ECHO "Building %name%% DONE! Finished!"
