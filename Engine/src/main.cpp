@@ -8,20 +8,16 @@ int main() {
         return -1;
     }
 
-    // VkContext vkcontext;
-    // if (!vk_init(&vkcontext, p->m_hwnd)) {
-    //     std::cout << "VK Init succesful" << std::endl;
-    // }
-
     while (p->update_window()) {
         std::cout << "Running" << std::endl;
 
         Sleep(333);  // 60 ish FPS is sleep 33ms
-        if (::IsWindowVisible(::GetConsoleWindow()) != FALSE) {
-            ::ShowWindow(::GetConsoleWindow(), SW_HIDE);
-        } else {
-            ::ShowWindow(::GetConsoleWindow(), SW_SHOW);
-        }
+        // NOTE: TOGGLE CONSOL WINDOW
+        //  if (IsWindowVisible(GetConsoleWindow()) != FALSE) {
+        //      ShowWindow(GetConsoleWindow(), SW_HIDE);
+        //  } else {
+        //      ShowWindow(GetConsoleWindow(), SW_SHOW);
+        //  }
     }
 
     return 0;

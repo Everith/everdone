@@ -24,5 +24,9 @@
 #endif
 
 namespace ED {
-
-}
+    class Renderer {
+       public:
+        Renderer();
+        ~Renderer();
+    };
+}  // namespace ED

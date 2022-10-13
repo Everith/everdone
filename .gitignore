@@ -1,16 +1,19 @@
 .git/
 # Other
 source/
-vendor/
 
 # Binaries
 bin/
 **/bin/
 !Vendor/bin/premake/
+vendor/glfw-bin/
+vendor/glad
 bin-int/
+engine/build/
+app/build/
 
 # Visual Studio files and folder
-.vscode/
+#.vscode/
 .vs/
 #**.sln
 #**.vcxproj
