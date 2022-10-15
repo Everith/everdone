@@ -24,7 +24,7 @@ namespace ED {
         platform();
         platform(const char *application_name, i32 x, i32 y, i32 width, i32 height)
             : application_name(application_name), x(x), y(y), width(width), height(height){};
-        virtual bool create_window();
+        virtual bool Create_window();
 
         void shutdown();
         b8 update_window();

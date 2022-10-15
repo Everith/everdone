@@ -1,12 +1,16 @@
 #pragma once
 // Vulkan
 #include <vulkan/vulkan.h>
+// OpenGL
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
 
 #include "../defines.h"
+
 #if WINDOWS_PLATFORM
 #include <windows.h>
 #include <windowsx.h>  // param input extraction
@@ -26,7 +30,14 @@
 namespace ED {
     class Renderer {
        public:
+        GLFWwindow* window = nullptr;
+
+       public:
         Renderer();
         ~Renderer();
+        void Create_window();
+        bool Init_glad();
+        void Viewport(int x, int y, int w, int h);
+        void framebuffer_size_callback();
     };
 }  // namespace ED

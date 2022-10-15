@@ -9,20 +9,17 @@
 // Clock
 static f64 clock_frequency;
 static LARGE_INTEGER start_time;
-namespace ED
-{
+namespace ED {
 
     LRESULT CALLBACK process_message(HWND m_hwnd, u32 msg, WPARAM w_param, LPARAM l_param);
-    platform::platform()
-    {
+    platform::platform() {
     }
-    bool platform::create_window()
-    {
+    bool platform::Create_window() {
         h_instance = GetModuleHandleA(0);
         // Setup and register window class.
         WNDCLASSA wc = {};
         // memset(&wc, 0, sizeof(wc)); // allocating memory for wc class TODO:maybe later
-        wc.style = CS_DBLCLKS; // Get double-clicks
+        wc.style = CS_DBLCLKS;  // Get double-clicks
         wc.lpfnWndProc = process_message;
         wc.cbClsExtra = 0;
         wc.cbWndExtra = 0;
@@ -30,11 +27,10 @@ namespace ED
         // wc.hIcon  =  LoadIcon (GetModuleHandle(NULL), MAKEINTRESOURCE(ICO1));
         // wc.hIcon = LoadIcon(h_instance, MAKEINTRESOURCE(ICO1));
         // wc.hIconSm = LoadIcon (GetModuleHandle(NULL), MAKEINTRESOURCE(ICO1));
-        wc.hCursor = LoadCursor(NULL, IDC_ARROW); // NULL; // Manage the cursor manually
-        wc.hbrBackground = NULL;                  // Transparent
+        wc.hCursor = LoadCursor(NULL, IDC_ARROW);  // NULL; // Manage the cursor manually
+        wc.hbrBackground = NULL;                   // Transparent
         wc.lpszClassName = "Everdone_window_class";
-        if (!RegisterClassA(&wc))
-        {
+        if (!RegisterClassA(&wc)) {
             MessageBoxA(0, "Window registration failed", "Error", MB_ICONEXCLAMATION | MB_OK);
             return FALSE;
         }
@@ -60,17 +56,14 @@ namespace ED
             window_ex_style, "Everdone_window_class", application_name,
             window_style, window_x, window_y, window_width, window_height,
             0, 0, h_instance, 0);
-        if (handle == 0)
-        {
+        if (handle == 0) {
             MessageBoxA(NULL, "Window creation failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
             return 0;
-        }
-        else
-        {
+        } else {
             m_hwnd = handle;
         }
         // Show the window
-        b32 should_activate = 1; // TODO: if the window should not accept input, this should be false.
+        b32 should_activate = 1;  // TODO: if the window should not accept input, this should be false.
         i32 show_window_command_flags = should_activate ? SW_SHOW : SW_SHOWNOACTIVATE;
         // If initially minimized, use SW_MINIMIZE : SW_SHOWMINNOACTIVE;
         // If initially maximized, use SW_SHOWMAXIMIZED : SW_MAXIMIZE
@@ -78,27 +71,21 @@ namespace ED
         // InitNotifyIconData();
         return 1;
     }
-    void platform::shutdown()
-    {
+    void platform::shutdown() {
         // Simply cold-cast to the known type.
-        if (m_hwnd)
-        {
+        if (m_hwnd) {
             DestroyWindow(m_hwnd);
             m_hwnd = 0;
         }
     }
-    b8 platform::update_window()
-    {
+    b8 platform::update_window() {
         MSG message;
-        while (PeekMessageA(&message, NULL, 0, 0, PM_REMOVE))
-        {
+        while (PeekMessageA(&message, NULL, 0, 0, PM_REMOVE)) {
             // OutputDebugStringA(message.message);
-            if (message.message == WM_QUIT || message.message == WM_CLOSE)
-            {
+            if (message.message == WM_QUIT || message.message == WM_CLOSE) {
                 return false;
             }
-            if (69420 == message.message)
-            {
+            if (69420 == message.message) {
                 minimize();
             }
             TranslateMessage(&message);
@@ -158,14 +145,12 @@ namespace ED
     //    {
     //        Sleep(ms);
     //    }
-    void platform::minimize()
-    {
+    void platform::minimize() {
         // hide the main window
         OutputDebugStringW(L"\nminimize()");
         ShowWindow(m_hwnd, SW_HIDE);
     }
-    void platform::restore()
-    {
+    void platform::restore() {
         ShowWindow(m_hwnd, SW_SHOW);
     }
 
@@ -188,45 +173,36 @@ namespace ED
     // Shell_NotifyIconA(NIM_DELETE, &nid); // remove notificon from stert menu
     //    }
 
-    LRESULT process_message(HWND window, u32 msg, WPARAM w_param, LPARAM l_param)
-    {
+    LRESULT process_message(HWND window, u32 msg, WPARAM w_param, LPARAM l_param) {
         platform p;
-        switch (msg)
-        {
-        case WM_SYSCOMMAND:
-        {
-            OutputDebugStringW(L"\nWM_SYSCOMMAND");
-            /*
-            In WM_SYSCOMMAND messages, the four low-order bits of the wParam parameter
-            are used internally by the system. To obtain the correct result when testing the value of wParam,
-            an application must combine the value 0xFFF0 with the wParam value by using the bitwise AND operator.
-            */
-            switch (w_param & 0xFFF0)
-            {
-            case SC_MINIMIZE:
-            case SC_CLOSE:
-                OutputDebugStringW(L"\nSC_CLOSE 69420");
-                break;
-            }
-        }
-        break;
-        case WM_CLOSE:
-        {
-            OutputDebugStringW(L"\nWM_CLOSE");
-            PostQuitMessage(0);
-            return WM_QUIT;
-        }
-        break;
-        case WM_DESTROY:
-        {
-            OutputDebugStringW(L"\nWM_DESTROY");
-            return WM_QUIT;
-        }
-        break;
-        default:
-            return DefWindowProcA(window, msg, w_param, l_param);
+        switch (msg) {
+            case WM_SYSCOMMAND: {
+                OutputDebugStringW(L"\nWM_SYSCOMMAND");
+                /*
+                In WM_SYSCOMMAND messages, the four low-order bits of the wParam parameter
+                are used internally by the system. To obtain the correct result when testing the value of wParam,
+                an application must combine the value 0xFFF0 with the wParam value by using the bitwise AND operator.
+                */
+                switch (w_param & 0xFFF0) {
+                    case SC_MINIMIZE:
+                    case SC_CLOSE:
+                        OutputDebugStringW(L"\nSC_CLOSE 69420");
+                        break;
+                }
+            } break;
+            case WM_CLOSE: {
+                OutputDebugStringW(L"\nWM_CLOSE");
+                PostQuitMessage(0);
+                return WM_QUIT;
+            } break;
+            case WM_DESTROY: {
+                OutputDebugStringW(L"\nWM_DESTROY");
+                return WM_QUIT;
+            } break;
+            default:
+                return DefWindowProcA(window, msg, w_param, l_param);
         }
         return DefWindowProcA(window, msg, w_param, l_param);
     }
-}
+}  // namespace ED
 #endif
