@@ -8,6 +8,7 @@ bin/
 !Vendor/bin/premake/
 vendor/glfw-bin/
 vendor/glad
+vendor/glfw-3.3.8.bin.WIN64
 bin-int/
 engine/build/
 app/build/

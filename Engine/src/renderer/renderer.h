@@ -1,9 +1,13 @@
 #pragma once
-// Vulkan
-#include <vulkan/vulkan.h>
+// #pragma comment(lib, "gdi32.lib")
+// #pragma comment(lib, "opengl32.lib")
+// #pragma comment(lib, "glfw3.lib")
+
 // OpenGL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+// Vulkan
+#include <vulkan/vulkan.h>
 
 #include <iostream>
 #include <stdio.h>
