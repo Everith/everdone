@@ -43,5 +43,7 @@ namespace ED {
         bool Init_glad();
         void Viewport(int x, int y, int w, int h);
         void framebuffer_size_callback();
+        void processInput(GLFWwindow* window);
+        void Triangle();
     };
 }  // namespace ED
